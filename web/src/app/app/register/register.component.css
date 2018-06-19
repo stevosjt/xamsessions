@@ -1,0 +1,111 @@
+
+em { 
+    float:right; 
+    color:#E05C65; 
+    position:absolute;  
+ }
+ 
+ .errorLabel {
+     height:20px; 
+     float:right;
+     margin-right: 70px;
+ }
+ 
+ 
+ .loginDiv {
+     margin: 0 auto;
+     width:550px;
+     margin-top:50px;
+ }
+
+ .login-group {
+     width: 90%;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ 
+ .submitContainer {
+     width:100%;
+     margin: 0 auto;
+     margin-top:10px;
+ }
+ 
+ button {
+     width:100%;
+ }
+
+ .button-container {
+     width: 90%;
+     margin-left: 8%;
+ }
+ 
+ 
+ #login {
+     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+     padding:50px;
+     width: auto;
+ }
+ 
+ #login {
+     position: absolute;
+     z-index: 0;
+     background-color: #fff;   
+     border-radius: 10px; 
+ }
+ 
+ input {
+     margin-top:2px;
+     margin-bottom: 15px;
+     padding: 15px;
+     width: 160%;
+ }
+ 
+ 
+ h1 {
+     text-align: center;
+     color: #666;
+     margin: 0 0 30px 0;
+     letter-spacing: 4px;
+     font: normal 26px/1 Verdana;
+     position: relative;
+ }
+ 
+ 
+ h1:after {      
+     right: 0;
+ }
+ 
+ h1:before {
+     background-image: linear-gradient(to right, #777, #fff);
+     left: 0;
+ }
+ 
+ button {
+     width:100%;
+ }
+
+ .backcover {
+     position: absolute;
+     height: 100%;
+     width: 100%;
+     background-color:#004b70;
+ }
+
+ img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 30px;
+ }
+
+ .notificationdiv {
+     background-color: #fff;
+     padding: 15px;
+     border-radius: 10px;
+ }
+
+ .notificationdiv div {
+    text-align: center;
+}
+

@@ -1,0 +1,81 @@
+<div class="backcover">
+  <div class="loginDiv" *ngIf="!mainLoad">
+    <div *ngIf="errorMain" [@routerTransition]>
+      <div class="notificationdiv">
+        <img alt="Logo">
+        <div>{{errorMessageMain}}</div>
+        <div>Click
+          <a [routerLink]="['/login']">here</a> to return to the login screen</div>
+      </div>
+    </div>
+    <div *ngIf="!errorMain" [@routerTransition]>
+      <div *ngIf="success">
+        <div class="notificationdiv">
+          <img alt="Logo">
+          <div>User registration successful.</div>
+          <div>Click
+            <a [routerLink]="['/login']">here</a> to return to the login screen</div>
+        </div>
+      </div>
+      <div *ngIf="!success" [@routerTransition]>
+        <form class="form" id="login" [formGroup]="registerForm">
+          <img  alt="Logo">
+          <h1>Registration</h1>
+          <div *ngIf="errorCheck" style="color:#E05C65">{{errorMessage}}</div>
+          <div class="login-group">
+            <div class="form-group">
+              <label for="Email">Email</label>
+              <label style="margin-left:-5px !important;" for="Email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"
+                [class.invalid]="registerForm.get('Email').invalid && (registerForm.get('Email').dirty || registerForm.get('Email').touched)">
+                <input id="Email" type="text" formControlName="Email" placeholder="Email..." [attr.disabled]="loading ? 'disabled' : null">
+                <span *ngIf="registerForm.controls.Email.value ==='' && (registerForm.get('Email').dirty || registerForm.get('Email').touched)"
+                  class="tooltip-content">Email is required.</span>
+                <span *ngIf="registerForm.controls.Email?.hasError('email') && (registerForm.get('Email').dirty || registerForm.get('Email').touched)"
+                  class="tooltip-content">Not a valid email address.</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="FirstName">FirstName</label>
+              <label style="margin-left:-5px !important;" for="FirstName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"
+                [class.invalid]="registerForm.get('FirstName').invalid && (registerForm.get('FirstName').dirty || registerForm.get('FirstName').touched)">
+                <input id="FirstName" type="text" formControlName="FirstName" placeholder="First Name..." [attr.disabled]="loading ? 'disabled' : null">
+                <span class="tooltip-content">FirstName is required.</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="LastName">LastName</label>
+              <label style="margin-left:-5px !important;" for="LastName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"
+                [class.invalid]="registerForm.get('LastName').invalid && (registerForm.get('LastName').dirty || registerForm.get('LastName').touched)">
+                <input id="LastName" type="text" formControlName="LastName" placeholder="Last Name..." [attr.disabled]="loading ? 'disabled' : null">
+                <span class="tooltip-content">LastName is required.</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="Password">Password</label>
+              <label style="margin-left:-5px !important;" for="Password" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"
+                [class.invalid]="registerForm.get('Password').invalid && (registerForm.get('Password').dirty || registerForm.get('Password').touched)">
+                <input id="Password" type="password" formControlName="Password" placeholder="Password..." [attr.disabled]="loading ? 'disabled' : null">
+                <span class="tooltip-content" *ngIf="registerForm.controls.Password?.value === ''">Password is required.</span>
+                <span class="tooltip-content" *ngIf="registerForm.controls.Password?.hasError('minlength')">Minimum length of 8 characters required.</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="ConfPassword">Confirm Password</label>
+              <label style="margin-left:-5px !important;" for="ConfPassword" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"
+                [class.invalid]="(registerForm.get('ConfPassword').invalid || registerForm.hasError('mismatchedPasswords')) && (registerForm.get('ConfPassword').dirty || registerForm.get('ConfPassword').touched)">
+                <input id="ConfPassword" type="password" formControlName="ConfPassword" placeholder="Confirm Password..." [attr.disabled]="loading ? 'disabled' : null">
+                <span class="tooltip-content" *ngIf="registerForm.controls.ConfPassword?.value === ''">Confirm Password is required.</span>
+                <span class="tooltip-content" *ngIf="registerForm.hasError('mismatchedPasswords')">Passwords do not match.</span>
+              </label>
+            </div>
+          </div>
+          <div class="button-container">
+            <button class="btn btn-success" type="submit" (click)="registerUser()" [disabled]="registerForm.invalid || loading">
+              <span *ngIf="loading" class="spinner spinner-inline spinner-padding"></span>Register</button>
+            <button type="button" class="btn btn-outline" (click)="cancel()" [attr.disabled]="loading ? 'disabled' : null">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

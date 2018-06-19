@@ -1,0 +1,31 @@
+<div class="backcover">
+  <div class="loginDiv" [@routerTransition]>
+    <form id="login" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+      <img alt="Logo">
+      <h1>System Login</h1>
+      <div class="login-group">
+        <div style="display: block; height:40px; margin-top:-18px; margin-bottom:-25px;">
+          <div *ngIf="loginInvalid" class="error active" style="color:red">{{errorMessage}}</div>
+        </div>
+        <div class="form-group">
+          <div class="errorLabel">
+            <em *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || mouseoverLogin)">Required</em>
+          </div>
+          <input (ngModel)="email" name="email" required id="email" type="text" class="form-control" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <div class="errorLabel">
+            <em *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+          </div>
+          <input (ngModel)="password" name="password" required id="password" type="password" class="form-control" placeholder="Password"
+          />
+        </div>
+        <span class="submitContainer" (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+          <button type="submit" [disabled]="loginForm.invalid || loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner spinner-inline" style="margin-right:5px;"></span>Login</button>
+        </span>
+        <!-- <span style="float:right;"><a>Forgot Password?</a></span> -->
+      </div>
+    </form>
+  </div>
+</div>
